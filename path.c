@@ -78,7 +78,7 @@ void path_exe(char **args)
 	}
 	else if (pid == 0)
 	{
-		execve(args[0], args, NULL);
+		execve(args[1], args, NULL);
 		perror("Execution failed");
 		exit(1);
 	}
