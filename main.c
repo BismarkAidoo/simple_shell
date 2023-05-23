@@ -5,7 +5,7 @@
  *
  *
  * Return: Always (0) success
- */
+ *
 
 int main(void)
 {
@@ -28,9 +28,25 @@ int main(void)
 			free(input);
 			break;
 		}
-		/* process_exe(args[0]); */
+		 process_exe(args[0]); 
 		free(args);
 		free(input);
 	}
+	return (0);
+}*/
+
+int main(void)
+{
+	char *prompt = "McAnn$  ";
+	char *input;
+	
+	while (1)
+	{
+		printPrompt(prompt);
+		input = readInput();
+		process_exe(input);
+		free(input);
+	}
+	
 	return (0);
 }

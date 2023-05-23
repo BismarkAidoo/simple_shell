@@ -83,7 +83,7 @@ int process_exe(char *input)
  * main - entry to code
  *
  * Return: Always (0) success
- */
+ *
 int main(void)
 {
 	char *prompt = "McAnn$  ";
@@ -97,4 +97,4 @@ int main(void)
 		free(input);
 	}
 	return (0);
-}
+}*/
