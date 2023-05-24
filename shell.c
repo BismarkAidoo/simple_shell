@@ -87,5 +87,4 @@ int process_exe(char *input)
 		wait(NULL);
 	}
 
-	return (0);
 }

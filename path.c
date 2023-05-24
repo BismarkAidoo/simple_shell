@@ -12,14 +12,13 @@ void path_exe(char **args);
 
 void handle_path(char **args, char *path)
 {
-	int i;
 	char *dir;
+	char *path_copy;
 	char command_path[MAX_INPUT_SIZE];
 	int found = 0;
 
 	if (args == NULL || args[0] == NULL)
 	{
-		printf("Invalid");
 		return;
 	}
 
@@ -31,25 +30,12 @@ void handle_path(char **args, char *path)
 			_strcpy(command_path, args[0]);
 		}
 	}
-
-		else
+		if (access(command_path, X_OK) == 0)
 		{
-			dir = strtok(path, ":");
-
-		while (dir != NULL)
-		{
-	/* command_path_s = _strlen(dir) + _strlen(args[0]) + 2; */
-		_strcpy(command_path, dir);
-		_strcat(command_path, "/");
-		_strcat(command_path, args[0]);
-
-			if (access(command_path, X_OK) == 0)
-			{
-				found = 1;
-				break;
-			}
-			dir = strtok(NULL, ":");
+			found = 1;
+			break;
 		}
+			dir = strtok(NULL, ":");
 	}
 
 	if (!found)
@@ -57,15 +43,9 @@ void handle_path(char **args, char *path)
 		printf("command not found: %s\n", command_path);
 		return;
 	}
+	perror("Execution failed");
+	exit(1);
 
-	printf("Command path: %s\n", command_path);
-	printf("Arguments: ");
-
-	for (i = 0; args[i] != NULL; i++)
-	{
-		printf("%s ", args[i]);
-	}
-	path_exe(args);
 }
 
 /**
@@ -75,7 +55,6 @@ void handle_path(char **args, char *path)
  *
  * Return: Nothing
  */
-
 void path_exe(char **args)
 {
 	pid_t pid = fork();
@@ -108,3 +87,4 @@ void path_exe(char **args)
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 }
+*/

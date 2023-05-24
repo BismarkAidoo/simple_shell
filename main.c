@@ -18,11 +18,6 @@ int main(void)
 	{
 		printPrompt(prompt);
 		input = readInput();
-		process_exe(input);
-		args = handle_args(input);
-		handle_path(args, path);
-		free(input);
-	}
 
 	return (0);
 }
