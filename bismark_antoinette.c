@@ -11,7 +11,7 @@ int main(void)
 	char a[] = "Antoinette";
 	char b[] = "Bismark";
 
-	printf("%s and %s are the authors of this repository\n", a, b);
+	write("%s and %s are the authors of this repository\n", a, b);
 
 	return (0);
 }
