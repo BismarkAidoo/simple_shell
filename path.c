@@ -11,13 +11,14 @@ void path_exe(char **args);
  */
 void handle_path(char **args, char *path)
 {
+	int i;
 	char *dir;
-	char *path_copy;
 	char command_path[MAX_INPUT_SIZE];
 	int found = 0;
 
 	if (args == NULL || args[0] == NULL)
 	{
+		printf("Invalid");
 		return;
 	}
 	if (args[0][0] == '/')
@@ -29,15 +30,12 @@ void handle_path(char **args, char *path)
 		}
 	}
 	else
-	{	path_copy = _strdup(path);
-		if (path_copy == NULL)
-		{
-			perror("Memory allocation failed");
-			return;
-		}
+	{	
 		dir = strtok(path, ":");
+
 		while (dir != NULL)
 		{
+		/* command_path_s = _strlen(dir) + _strlen(args[0]) + 2; */
 			_strcpy(command_path, dir);
 			_strcat(command_path, "/");
 			_strcat(command_path, args[0]);
@@ -54,11 +52,13 @@ void handle_path(char **args, char *path)
 		printf("command not found: %s\n", command_path);
 		return;
 	}
-	if (execve(command_path, args, NULL) == -1)
+	printf("Command path: %s\n", command_path);
+	printf("Arguments: ");
+	for (i = 0; args[i] != NULL; i++)
 	{
-		perror("Execution failed");
-		exit(1);
+		printf("%s ", args[i]);
 	}
+	path_exe(args);
 }
 /**
  * path_exe - a function to execute command
@@ -66,7 +66,7 @@ void handle_path(char **args, char *path)
  * @args: array of arguments
  *
  * Return: Nothing
- *
+ */
 void path_exe(char **args)
 {
 	pid_t pid = fork();
@@ -98,4 +98,3 @@ void path_exe(char **args)
 		while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 }
-*/

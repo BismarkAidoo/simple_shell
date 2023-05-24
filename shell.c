@@ -52,7 +52,7 @@ char *readInput()
  * @args: an array of arguments
  *
  * Return: Always (0) success
- *
+ */
 int process_exe(char *input)
 {
 	pid_t pid = fork();
@@ -79,4 +79,22 @@ int process_exe(char *input)
 	return (0);
 
 }
-*/
+/**
+ * main - entry to code
+ *
+ * Return: Always (0) success
+ *
+int main(void)
+{
+	char *prompt = "McAnn$  ";
+	char *input;
+
+	while (1)
+	{
+		printPrompt(prompt);
+		input = readInput();
+		process_exe(input);
+		free(input);
+	}
+	return (0);
+}*/
