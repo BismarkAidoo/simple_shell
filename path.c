@@ -12,9 +12,9 @@ void path_exe(char **args);
 
 void handle_path(char **args, char *path)
 {
-	int i;
 	char *dir;
 	char command_path[MAX_INPUT_SIZE];
+	char *path_copy;
 	int found = 0;
 
 	if (args == NULL || args[0] == NULL)
@@ -31,7 +31,7 @@ void handle_path(char **args, char *path)
 			_strcpy(command_path, args[0]);
 		}
 	}
-	else if
+	else
 	{
 		path_copy = strdup(path);
 		if (path_copy == NULL)
@@ -57,14 +57,7 @@ void handle_path(char **args, char *path)
 	}
 	if (!found)
 	{
-		printf("command not found: %s\n", command_path);
 		return;
-	}
-	printf("Command path: %s\n", command_path);
-	printf("Arguments: ");
-	for (i = 0; args[i] != NULL; i++)
-	{
-		printf("%s ", args[i]);
 	}
 	path_exe(args);
 }
@@ -101,6 +94,6 @@ void path_exe(char **args)
 				perror("Waitpid failed");
 				exit(1);
 			}
-		}
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 }
