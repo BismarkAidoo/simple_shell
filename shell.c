@@ -53,7 +53,7 @@ char *readInput()
 /* Execution */
 /**
  * process_exe - a function that executes the commands given
- * @args: an array of arguments
+ * @input: argument received as command
  *
  * Return: Always (0) success
  */

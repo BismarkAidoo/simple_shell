@@ -13,7 +13,7 @@
 #define MAX_TOKEN_SIZE 20
 extern char **environ;
 
-
+int sum(a + b);
 void printPrompt(const char *prompt);
 char *readInput();
 int process_exe(char *input);

@@ -2,6 +2,8 @@
 #define STRING_UTILS_H
 #include <stddef.h>
 
+extern char **environ;
+
 int  _strlen(const char *str);
 int _strncmp(const char *s1, const
 		char *s2, size_t n);

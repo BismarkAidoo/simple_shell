@@ -1,22 +1,14 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "shell.h"
 
 /**
- * main - Entry point
+ * sum  - a function that adds two numbers
+ * @a: first parameter
+ * @b: second parameter
  *
  * Return: Always 0 (success)
  */
 
-int main(void)
+int sum(int a, int b)
 {
-	char a[] = "Antoinette";
-	char b[] = "Bismark";
-	char buffer[100];
-	int length;
-	
-	length = snprintf(buffer, sizeof(buffer), "%s and %s are the authors of this repository\n", a, b);
-	
-	write(1, buffer, length);
-
-	return (0);
+	return ((a) + (b));
 }

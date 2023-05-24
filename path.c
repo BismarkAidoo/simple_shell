@@ -70,7 +70,6 @@ void handle_path(char **args, char *path)
 }
 /**
  * path_exe - a function to execute command
- * @command_path: the path to the command
  * @args: array of arguments
  *
  * Return: Nothing
@@ -94,8 +93,8 @@ void path_exe(char **args)
 	{
 		int status;
 		pid_t wpid;
-		do 
-		{
+
+		do {
 			wpid = waitpid(pid, &status, 0);
 			if (wpid == -1)
 			{
@@ -103,6 +102,5 @@ void path_exe(char **args)
 				exit(1);
 			}
 		}
-		while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 }

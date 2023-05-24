@@ -12,7 +12,7 @@ int main(void)
 	char *input;
 	char **args;
 	char *path = _getenv("PATH");
-	
+
 	while (1)
 	{
 		printPrompt(prompt);
@@ -22,6 +22,5 @@ int main(void)
 		handle_path(args, path);
 		free(input);
 	}
-	
 	return (0);
 }
