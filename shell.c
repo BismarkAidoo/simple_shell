@@ -7,6 +7,7 @@
  *
  * Return: Nothing
  */
+
 void printPrompt(const char *prompt)
 {
 	int prompt_length = _strlen(prompt);
@@ -20,6 +21,7 @@ void printPrompt(const char *prompt)
  *
  * Return: A string
  */
+
 char *readInput()
 {
 	char *input = NULL;
@@ -27,6 +29,7 @@ char *readInput()
 	ssize_t characters_read;
 
 	characters_read = getline(&input, &buffer_size, stdin);
+
 	if (characters_read == -1)
 	{
 		if (feof(stdin))
@@ -40,6 +43,7 @@ char *readInput()
 			return (NULL);
 		}
 	}
+
 	if (input[characters_read - 1] == '\n')
 	{
 		input[characters_read - 1] = '\0';
@@ -77,24 +81,4 @@ int process_exe(char *input)
 		wait(NULL);
 	}
 	return (0);
-
 }
-/**
- * main - entry to code
- *
- * Return: Always (0) success
- *
-int main(void)
-{
-	char *prompt = "McAnn$  ";
-	char *input;
-
-	while (1)
-	{
-		printPrompt(prompt);
-		input = readInput();
-		process_exe(input);
-		free(input);
-	}
-	return (0);
-}*/

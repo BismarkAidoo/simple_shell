@@ -9,6 +9,7 @@ void path_exe(char **args);
  *
  * Return: Nothing
  */
+
 void handle_path(char **args, char *path)
 {
 	int i;
@@ -21,6 +22,7 @@ void handle_path(char **args, char *path)
 		printf("Invalid");
 		return;
 	}
+
 	if (args[0][0] == '/')
 	{
 		if (access(args[0], X_OK) == 0)
@@ -29,8 +31,14 @@ void handle_path(char **args, char *path)
 			_strcpy(command_path, args[0]);
 		}
 	}
-	else
-	{	
+	else if
+	{
+		path_copy = strdup(path);
+		if (path_copy == NULL)
+		{
+			perror("Memory allocation failed");
+			return;
+		}
 		dir = strtok(path, ":");
 
 		while (dir != NULL)
