@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-extern char **environ;
 
 /**
  * _strlen - a function to find the
@@ -162,7 +161,6 @@ char *_strdup(const char *s)
 
 char *_getenv(const char *name)
 {
-	extern char **environ;
 	char **env = environ;
 	size_t name_len = _strlen(name);
 
