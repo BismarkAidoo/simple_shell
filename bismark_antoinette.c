@@ -1,17 +1,14 @@
-#include <stdio.h>
+#include "shell.h"
 
 /**
- * main - Entry point
+ * sum - a function that adds two numbers
+ * @a: first parameter
+ * @b: second parameter
  *
  * Return: Always 0 (success)
  */
 
-int main(void)
+int sum(int a, int b)
 {
-	char a[] = "Antoinette";
-	char b[] = "Bismark";
-
-	printf("%s and %s are the authors of this repository\n", a, b);
-
-	return (0);
+	return ((a) + (b));
 }
