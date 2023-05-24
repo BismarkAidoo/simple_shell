@@ -10,6 +10,7 @@
 
 char **handle_args(char *input)
 {
+	int i;
 	int ac = 0;
 	int index = 0;
 	char **args;
@@ -24,16 +25,33 @@ char **handle_args(char *input)
 	}
 
 	args = malloc(sizeof(char *) * (ac + 1));
+	if (args == NULL)
+	{
+		perror("Memory allocation failed");
+		return (NULL);
+	}
 	token = strtok(input, " ");
 
 	while (token != NULL)
 	{
 		args[index] = strdup(token);
+		if (args[index] == NULL)
+		{
+			perror("Memory allocation failed");
+			/* Free previously allocated arguments */
+			for (i = 0; i < index; i++)
+			{
+				free(args[i]);
+			}
+			free(args);
+			return (NULL);
+		}
 		token = strtok(NULL, " ");
 		index++;
 	}
 
 	args[index] = NULL;
-
+	/* free input after tokenization */
+	free(input);
 	return (args);
 }
