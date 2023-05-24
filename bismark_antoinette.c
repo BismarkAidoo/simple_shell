@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * Sum - a function that adds two numbers
+ * sum - a function that adds two numbers
  * @a: first parameter
  * @b: second parameter
  *
