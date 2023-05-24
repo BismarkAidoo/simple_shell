@@ -7,6 +7,7 @@
  *
  * Return: Always (0) success
  */
+
 char **handle_args(char *input)
 {
 	int ac = 0;
@@ -15,19 +16,24 @@ char **handle_args(char *input)
 	char *token;
 
 	token = strtok(input, " ");
+
 	while (token != NULL)
 	{
 		ac++;
 		token = strtok(NULL, " ");
 	}
+
 	args = malloc(sizeof(char *) * (ac + 1));
 	token = strtok(input, " ");
+
 	while (token != NULL)
 	{
 		args[index] = strdup(token);
 		token = strtok(NULL, " ");
 		index++;
 	}
+
 	args[index] = NULL;
+
 	return (args);
 }
