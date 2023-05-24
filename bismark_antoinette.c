@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include "shell.h"
 
 /**
  * add - a function that adds two numbers
@@ -10,14 +10,14 @@
 
 int sum(int a, int b)
 {
-	return ((a) + (b));
+	return (a + b);
 }
 
 /**
  * main - Entry point of the program
  *
  * Return: Always (0) success
- */
+ *
 
 int main(void)
 {
@@ -33,4 +33,4 @@ int main(void)
 	write(1, butter, length);
 
 	return (0);
-}
+}*/
