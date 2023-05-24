@@ -30,61 +30,37 @@ void handle_path(char **args, char *path)
 			_strcpy(command_path, args[0]);
 		}
 	}
-		if (access(command_path, X_OK) == 0)
+	else
+	{
+		path_copy = strdup(path);
+		if (path_copy == NULL)
 		{
-			found = 1;
-			break;
-		}
+			perror("Memory allocation failed");
+			return;
+		{
+		dir = strtok(path, ":");
+		while (dir != NULL)
+		{
+			_strcpy(command_path, dir);
+			_strcat(command_path, "/");
+			_strcat(command_path, args[0]);
+			if (access(command_path, X_OK) == 0)
+			{
+				found = 1;
+				break;
+			}
 			dir = strtok(NULL, ":");
+		}
 	}
-
 	if (!found)
 	{
 		printf("command not found: %s\n", command_path);
 		return;
 	}
-	perror("Execution failed");
-	exit(1);
-
-}
-
-/**
- * path_exe - a function to execute command
- * @command_path: the path to the command
- * @args: array of arguments
- *
- * Return: Nothing
- */
-void path_exe(char **args)
-{
-	pid_t pid = fork();
-
-	if (pid == -1)
+	if (execve(command_path, args, NULL) == -1)
 	{
-		perror("Fork failed");
-		exit(1);
-	}
-
-	else if (pid == 0)
-	{
-		execve(args[1], args, NULL);
 		perror("Execution failed");
 		exit(1);
 	}
-
-	else
-	{
-		int status;
-		pid_t wpid;
-
-		do {
-			wpid = waitpid(pid, &status, 0);
-			if (wpid == -1)
-			{
-				perror("Waitpid failed");
-				exit(1);
-			}
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-	}
 }
-*/
+	
