@@ -81,11 +81,11 @@ int process_exe(char *input)
 
 }
 /**
- * main - entry to code
+ * main - entry to main function
  *
  * Return: Always (0) success
  */
-int main(void)
+int main()
 {
 	char *prompt = "McAnn$  ";
 	char *input;
@@ -93,9 +93,9 @@ int main(void)
 	while (1)
 	{
 		printPrompt(prompt);
-		input = readInput();
+		input = readInput(input);
 		process_exe(input);
-		free(input);
 	}
+	free(input);
 	return (0);
 }
