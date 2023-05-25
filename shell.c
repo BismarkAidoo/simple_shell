@@ -54,7 +54,7 @@ char *readInput()
 /* Execution */
 /**
  * process_exe - a function that executes the commands given
- * @args: an array of arguments
+ * @input: an array of arguments
  *
  * Return: Always (0) success
  */
@@ -89,15 +89,25 @@ int process_exe(char *input)
  *
  * Return: Always (0) success
  */
-int main()
+int main(void)
 {
 	char *prompt = "McAnn$  ";
 	char *input;
+	char **args;
 
 	while (1)
 	{
 		printPrompt(prompt);
 		input = readInput(input);
+		args = handle_args(input);
+		if (args[0] != NULL)
+		{
+			if (_strcmp(args[0], "exit") == 0)
+			{
+				free(args);
+				exit(0);
+			}
+		}
 		process_exe(input);
 	}
 	free(input);
