@@ -8,14 +8,14 @@ ssize_t getline(char **lineptr,
 		size_t *n, FILE *stream)
 {
 	static char static_buffer[BUFFER_SIZE];
-	static ssize_t static_buffer_index;
+	static size_t static_buffer_index = 0;
 	ssize_t characters_read = 0;
 
 	if (static_buffer_index == 0 || static_buffer_index
 		    == strlen(static_buffer))
 	{
-		ssize_t bytes_read = read(fileno(stream),
-				static_buffer, BUFFER_SIZE);
+		size_t bytes_read = fread(static_buffer, 1,
+				BUFFER_SIZE, stream);
 		if (bytes_read == 0)
 		{
 			return (-1);
@@ -25,7 +25,7 @@ ssize_t getline(char **lineptr,
 	while (static_buffer_index > 0 &&
 			static_buffer[static_buffer_index - 1] != '\n')
 	{
-		if (characters_read >= *n - 1)
+		if (characters_read >= (ssize_t)(*n - 1))
 		{
 			*n += BUFFER_SIZE;
 			*lineptr = realloc(*lineptr, *n);
