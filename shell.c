@@ -89,11 +89,21 @@ int main()
 {
 	char *prompt = "McAnn$  ";
 	char *input;
+	char **args;
 
 	while (1)
 	{
 		printPrompt(prompt);
 		input = readInput(input);
+		args = handle_args(input);
+		if (args[0] != NULL)
+		{
+			if (_strcmp(args[0], "exit") == 0)
+			{
+				free(args);
+				exit(0);
+			}
+		}
 		process_exe(input);
 	}
 	free(input);

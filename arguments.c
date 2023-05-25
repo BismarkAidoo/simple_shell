@@ -46,7 +46,5 @@ char **handle_args(char *input)
 		index++;
 	}
 	args[index] = NULL;
-	/* free input after tokenization */
-	free(input);
 	return (args);
 }
