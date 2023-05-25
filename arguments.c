@@ -51,7 +51,5 @@ char **handle_args(char *input)
 	}
 
 	args[index] = NULL;
-	/* free input after tokenization */
-	free(input);
 	return (args);
 }
