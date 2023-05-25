@@ -14,7 +14,7 @@
 #define BUFFER_SIZE 1024
 extern char **environ;
 
-
+int sum(int a, int b);
 void printPrompt(const char *prompt);
 char *readInput();
 int process_exe(char *input);
