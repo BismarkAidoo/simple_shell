@@ -38,7 +38,6 @@ char **handle_args(char *input)
 		if (args[index] == NULL)
 		{
 			perror("Memory allocation failed");
-			/* Free previously allocated arguments */
 			for (i = 0; i < index; i++)
 			{
 				free(args[i]);
@@ -49,7 +48,6 @@ char **handle_args(char *input)
 		token = strtok(NULL, " ");
 		index++;
 	}
-
 	args[index] = NULL;
 	return (args);
 }

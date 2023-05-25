@@ -18,6 +18,7 @@ int main(void)
 
 	char *path = _getenv("PATH");
 	pid_t child_pid;
+
 	_setenv("PATH", "/bin", 1);
 
 	while (1)
