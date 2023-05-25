@@ -8,7 +8,7 @@ ssize_t getline(char **lineptr,
 		size_t *n, FILE *stream)
 {
 	static char static_buffer[BUFFER_SIZE];
-	static size_t static_buffer_index = 0;
+	static size_t static_buffer_index;
 	ssize_t characters_read = 0;
 
 	if (static_buffer_index == 0 || static_buffer_index

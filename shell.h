@@ -11,6 +11,7 @@
 #define MAX_PATH_SIZE 200
 #define MAX_INPUT_SIZE 100
 #define MAX_TOKEN_SIZE 20
+#define BUFFER_SIZE 1024
 extern char **environ;
 
 int sum(int a, int b);
