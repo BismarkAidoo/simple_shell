@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <unistd.h>
 #include "shell.h"
 
@@ -48,6 +49,58 @@ char *readInput()
 	{
 		input[characters_read - 1] = '\0';
 	}
-
 	return (input);
 }
+/* Execution */
+/**
+ * process_exe - a function that executes the commands given
+ * @args: an array of arguments
+ *
+ * Return: Always (0) success
+ */
+int process_exe(char *input)
+{
+	pid_t pid = fork();
+	char  **args;
+
+	if (pid == -1)
+	{
+		perror("Fork failed");
+		return (0);
+	}
+	else if (pid == 0)
+	{
+		args = handle_args(input);
+		if (execve(args[0], args, environ) == -1)
+		{
+			perror("./shell");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		wait(NULL);
+	}
+	return (0);
+}
+
+/**
+ * main - entry to main function
+ *
+ * Return: Always (0) success
+ *
+int main()
+{
+	char *prompt = "McAnn$  ";
+	char *input;
+
+	while (1)
+	{
+		printPrompt(prompt);
+		input = readInput(input);
+		process_exe(input);
+	}
+	free(input);
+	return (0);
+}
+*/

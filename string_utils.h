@@ -10,8 +10,7 @@ char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, const char *src);
 char *_strdup(const char *s);
 char *_getenv(const char *name);
-int _setenv(const char *name, const
-		char *value, int overwrite);
+int _setenv(const char *name, const char *value, int overwrite);
 void printEnvironment(void);
 
 #endif
