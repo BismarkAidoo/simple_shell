@@ -10,5 +10,5 @@ char *_strcpy(char *dest, const char *src);
 char *_strdup(const char *s);
 char *_getenv(const char *name);
 int _setenv(const char *name, const char *value, int overwrite);
-void printEnvironment();
+void printEnvironment(void);
 #endif

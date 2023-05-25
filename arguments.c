@@ -49,4 +49,4 @@ char **handle_args(char *input)
 	/* free input after tokenization */
 	free(input);
 	return (args);
-
+}
