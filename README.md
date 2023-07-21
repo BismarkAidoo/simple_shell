@@ -107,5 +107,8 @@ $
 ` Write a UNIX command line interpreter.`
 - Tast 2
 ` Handle command lines with arguments.`
+- Task 3
+` Handle the PATH.`
+` fork must not be called if the command doesn't exist.` 
 
 ### Reference
