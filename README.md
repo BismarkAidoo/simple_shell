@@ -107,8 +107,12 @@ $
 ` Write a UNIX command line interpreter.`
 - Tast 2
 ` Handle command lines with arguments.`
-- Task 3
-` Handle the PATH.`
-` fork must not be called if the command doesn't exist.` 
+- Task 3 
+` Handle the PATH`
+` fork must not be called if the command doesn't exist.`
+- Task 4
+` Implement the exit built-in, that exits the shell.`
+- Task 5
+`Implement the env built-in, that prints the current environment.`
 
 ### Reference
